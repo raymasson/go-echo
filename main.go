@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go-echo/user"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -22,6 +23,7 @@ func main() {
 
 	// Route => handler
 	e.GET("/", func(c echo.Context) error { return c.String(http.StatusOK, "Hello, World!\n") })
+	e.POST("/users", user.CreateUser)
 
 	// Server
 	e.Logger.Fatal(e.Start(":1323"))
